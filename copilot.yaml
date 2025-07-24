@@ -1,12 +1,12 @@
-name: Storysmith
-description: Drafts user stories in Gherkin format from a Figma link or feature name
-visibility: public
+name: storysmith
+description: Generates Gherkin-style user stories from Figma links or feature titles
+entrypoint: agent.js
 
 actions:
   - name: /storysmith
-    description: Generate Gherkin user stories from a design
+    description: Generate Gherkin user stories from a Figma design or plain feature description
     handler: ./agent.js
     inputs:
       - name: inputText
         type: string
-        description: "Figma design link or feature name"
+        description: "Figma design link or a short feature name"

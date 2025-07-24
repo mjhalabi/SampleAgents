@@ -22,9 +22,12 @@ Let me know if you want to add negative test cases, edge cases, or component bre
 `;
 };
 
-// Helper to extract a feature title from input
+// Helper to extract a cleaner feature title from Figma or text
 function extractFeatureTitle(text) {
-  const figmaMatch = text.match(/file\/([^/?]+)/i);
-  if (figmaMatch) return decodeURIComponent(figmaMatch[1]).replace(/-/g, ' ');
+  const figmaMatch =
+    text.match(/design\/[^/]+\/([^/?]+)/i) ||
+    text.match(/file\/[^/]+\/([^/?]+)/i) ||
+    text.match(/p=([^&]+)/i);
+  if (figmaMatch) return decodeURIComponent(figmaMatch[1]).replace(/[-_]/g, ' ').trim();
   return text || "Unnamed Feature";
 }
